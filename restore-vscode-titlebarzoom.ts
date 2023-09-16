@@ -1,0 +1,112 @@
+/**
+ * 1. 會報錯說corrupted,可以Don't show again
+ * 2. 每次更新會失效,需要重新運行這個script
+ * 3. 很有可能在某次更新后完全失效
+ * 4. 請在admin下運行,否則權限不足會報錯
+ */
+/**
+ * 請用Sync版本
+ * 不然兩個promise同時改一個檔案,會出錯
+ * 這就是之前執行的時候,有的時候成功,有的時候失敗,有的時候壞掉的原因
+ */
+import { readFileSync, writeFileSync } from "fs"
+import { join } from "path"
+import { fixChecksum } from "./fix-checksum"
+
+function modifyFile(filePath: string, findPattern: string, replacePattern: string) {
+    const fileContent = readFileSync(filePath).toString()
+    // console.log(fileContent);
+    const newFileContent = fileContent.replaceAll(findPattern, replacePattern)
+    writeFileSync(filePath, newFileContent)
+}
+function appendFile(filePath: string, appendContent: string) {
+    const fileContent = readFileSync(filePath).toString()
+    // console.log(fileContent);
+    const newFileContent = fileContent + appendContent
+    writeFileSync(filePath, newFileContent)
+}
+
+// const vscodeRootPath = 'D:/Program Files/Microsoft VS Code Insiders'
+// const vscodeRootPath = 'C:/Program Files/Microsoft VS Code'
+const vscodeRootPath = 'C:/Users/Fifv/AppData/Local/Programs/Microsoft VS Code'
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.css'),
+    'zoom:calc(1/var(--zoom-factor))',
+    ''
+)
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.css'),
+    'zoom:var(--zoom-factor)',
+    ''
+)
+appendFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.css'),
+    ';#workbench.parts.titlebar {--zoom-factor: 1 !important};',
+)
+/* 1.82 need this since WCO is forced turned on */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.css'),
+    '.monaco-workbench:not(.web):not(.mac) .part.titlebar .titlebar-container.counter-zoom .window-controls-container.primary{width:138px}',
+    '',
+)
+/* 新版本又變了 ~1.73 */
+// modifyFile(
+// 	join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+// 	'"hidden"||(0,_.getZoomFactor)()<1?',
+// 	'"hidden"?'
+// )
+// modifyFile(
+// 	join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+// 	'this.useCounterZoom?(0,R.getZoomFactor)():1',
+// 	'1'
+// )
+/* 1.74 */
+// modifyFile(
+// join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+// 'this.ub?(0,L.getZoomFactor)():1',
+// '1'
+// )
+/* 1.75~ */
+// modifyFile(
+// 	join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+// 	'this.wb?(0,D.getZoomFactor)():1',
+// 	'1'
+// )
+/* 1.77 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.wb?(0,L.getZoomFactor)():1',
+    '1'
+)
+/* 1.78~ */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.xb?(0,t.getZoomFactor)():1',
+    '1'
+)
+/* ? */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.xb?(0,L.getZoomFactor)():1',
+    '1'
+)
+/* 1.80 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.xb?(0,L.$0M)():1',
+    '1'
+)
+/* 1.81 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.xb?(0,L.$xN)():1',
+    '1'
+)
+/* 1.82 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.xb?(0,I.$JN)():1',
+    '1'
+)
+
+fixChecksum(vscodeRootPath)
