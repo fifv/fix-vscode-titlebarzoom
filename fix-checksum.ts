@@ -1,3 +1,7 @@
+/**
+ * CREDIT: [Fix VSCode Checksums](https://marketplace.visualstudio.com/items?itemName=lehni.vscode-fix-checksums)
+ */
+
 import fs = require('fs')
 import path = require('path')
 import crypto = require('crypto')
@@ -42,13 +46,13 @@ export function fixChecksum(vscodeRootPath: string) {
 function computeChecksum(filepath: fs.PathOrFileDescriptor) {
     var contents = fs.readFileSync(filepath)
     return crypto
-        .createHash('md5')
+        .createHash('sha256')
         .update(contents)
         .digest('base64')
         .replace(/=+$/, '')
 }
 
 
-(function _test() {
-    fixChecksum('C:/Users/Fifv/AppData/Local/Programs/Microsoft VS Code')
-})()
+// (function _test() {
+//     fixChecksum('C:/Users/Fifv/AppData/Local/Programs/Microsoft VS Code')
+// })()

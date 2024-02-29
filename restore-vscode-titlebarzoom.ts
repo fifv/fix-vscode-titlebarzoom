@@ -26,6 +26,10 @@ function appendFile(filePath: string, appendContent: string) {
     writeFileSync(filePath, newFileContent)
 }
 
+/**
+ * search `35:30` to find which to modify
+ */
+
 // const vscodeRootPath = 'D:/Program Files/Microsoft VS Code Insiders'
 // const vscodeRootPath = 'C:/Program Files/Microsoft VS Code'
 const vscodeRootPath = 'C:/Users/Fifv/AppData/Local/Programs/Microsoft VS Code'
@@ -106,6 +110,36 @@ modifyFile(
 modifyFile(
     join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
     'this.xb?(0,I.$JN)():1',
+    '1'
+)
+/* 1.83 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.Bb?(0,I.$7N)():1',
+    '1'
+)
+/* 1.84 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.Bb?(0,I.$qO)():1',
+    '1'
+)
+/* 1.85 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.Tb?(0,I.$UO)():1',
+    '1'
+)
+/* 1.86 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.preventZoom?(0,E.$pP)((0,a.getWindow)(this.element)):1',
+    '1'
+)
+/* 1.87 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.preventZoom?(0,E.$iQ)((0,l.getWindow)(this.element)):1',
     '1'
 )
 
