@@ -12,6 +12,8 @@
 import { readFileSync, writeFileSync } from "fs"
 import { join } from "path"
 import { fixChecksum } from "./fix-checksum"
+import path from 'path'
+import os from 'os'
 
 function modifyFile(filePath: string, findPattern: string, replacePattern: string) {
     const fileContent = readFileSync(filePath).toString()
@@ -27,12 +29,17 @@ function appendFile(filePath: string, appendContent: string) {
 }
 
 /**
- * search `35:30` to find which to modify
+ * Notes:
+ * search `35:30` in the js file to find which to modify
  */
 
 // const vscodeRootPath = 'D:/Program Files/Microsoft VS Code Insiders'
 // const vscodeRootPath = 'C:/Program Files/Microsoft VS Code'
-const vscodeRootPath = 'C:/Users/Fifv/AppData/Local/Programs/Microsoft VS Code'
+const vscodeRootPath = path.join(os.homedir(), '/AppData/Local/Programs/Microsoft VS Code')
+
+/**
+ * -Step 1-  modify css
+ */
 modifyFile(
     join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.css'),
     'zoom:calc(1/var(--zoom-factor))',
@@ -53,6 +60,11 @@ modifyFile(
     '.monaco-workbench:not(.web):not(.mac) .part.titlebar .titlebar-container.counter-zoom .window-controls-container.primary{width:138px}',
     '',
 )
+
+/**
+ * -Step 2-  modify js
+ */
+
 /* 新版本又變了 ~1.73 */
 // modifyFile(
 // 	join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
@@ -142,5 +154,15 @@ modifyFile(
     'this.preventZoom?(0,E.$iQ)((0,l.getWindow)(this.element)):1',
     '1'
 )
+/* 1.88 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.preventZoom?(0,E.$RQ)((0,c.getWindow)(this.element)):1',
+    '1'
+)
+
+/**
+ * -Step 3-  fix checksum
+ */
 
 fixChecksum(vscodeRootPath)

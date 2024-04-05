@@ -13,7 +13,7 @@ This script is used to hack vscode's code to force enable titlebar zoom. It also
 
 ## Note
 
-Start from 1.86, vscode use `sha265` to calc checksum instead of `md5`. You can this only affect one word in `fix-checksum.ts`
+Start from 1.86, vscode use `sha256` to calc checksum instead of `md5`. So if you are using old verions, search and edit the keyword in `fix-checksum.ts`
 
 ## Credit
 
