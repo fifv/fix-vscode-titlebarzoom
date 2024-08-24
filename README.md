@@ -7,9 +7,9 @@ This script is used to hack vscode's code to force enable titlebar zoom. It also
 ## Usage
 
 1. modify `vscodeRootPath` in `fix-vscode-titlebarzoom.ts` to your vscode's install dir
-2. execute `fix-vscode-titlebarzoom.ts`, I recommend using `tsx` tool to execute it.
+2. execute `fix-vscode-titlebarzoom.ts`, I recommend using ~~tsx~~ [bun](https://bun.sh) to execute it.
 
-* This script just do search and replace, so you can do it yourself In your favorite language.
+* This script just do search and replace, so you can do it yourself in your favorite language.
 
 ## Note
 
