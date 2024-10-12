@@ -60,6 +60,12 @@ modifyFile(
     '.monaco-workbench:not(.web):not(.mac) .part.titlebar .titlebar-container.counter-zoom .window-controls-container.primary{width:138px}',
     '',
 )
+/* 1.94 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.css'),
+    '.monaco-workbench:not(.web):not(.mac) .part.titlebar .titlebar-container.counter-zoom .window-controls-container{width:138px}',
+    '',
+)
 
 /**
  * -Step 2-  modify js
