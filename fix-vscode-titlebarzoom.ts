@@ -190,6 +190,12 @@ modifyFile(
     'this.preventZoom?EC(Le(this.element)):1',
     '1'
 )
+/* 1.96 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.preventZoom?$C(ke(this.element)):1',
+    '1'
+)
 
 /**
  * -Step 3-  fix checksum
