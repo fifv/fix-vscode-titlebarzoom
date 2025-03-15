@@ -27,16 +27,16 @@ function appendFile(filePath: string, appendContent: string) {
     const newFileContent = fileContent + appendContent
     writeFileSync(filePath, newFileContent)
 }
-
 /**
  * Notes:
  * search `35:30` in the js file to find which to modify
+ * or search this\.preventZoom\?..\(..\(this.element\)\):1
  */
 
 // const vscodeRootPath = 'D:/Program Files/Microsoft VS Code Insiders'
 // const vscodeRootPath = 'C:/Program Files/Microsoft VS Code'
 const vscodeRootPath = path.join(os.homedir(), '/AppData/Local/Programs/Microsoft VS Code')
-
+/** */
 /**
  * -Step 1-  modify css
  */
@@ -194,6 +194,18 @@ modifyFile(
 modifyFile(
     join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
     'this.preventZoom?$C(ke(this.element)):1',
+    '1'
+)
+/* 1.97 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.preventZoom?Bw(xe(this.element)):1',
+    '1'
+)
+/* 1.98 */
+modifyFile(
+    join(vscodeRootPath, 'resources/app/out/vs/workbench/workbench.desktop.main.js'),
+    'this.preventZoom?Jw(Se(this.element)):1',
     '1'
 )
 
