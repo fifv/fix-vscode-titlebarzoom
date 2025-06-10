@@ -1,4 +1,4 @@
-## Motivation
+# Fix vscode Titlebar Zoom
 
 From v1.72, vscode's titlebar zoom can't be less than 0
 
@@ -7,7 +7,9 @@ This script is used to hack vscode's code to force enable titlebar zoom. It also
 ## Usage
 
 1. modify `vscodeRootPath` in `fix-vscode-titlebarzoom.ts` to your vscode's install dir
+    * by default, `~/AppData/Local/Programs/Microsoft VS Code` is used
 2. execute `fix-vscode-titlebarzoom.ts`, I recommend using ~~tsx~~ [bun](https://bun.sh) to execute it.
+   *  the `start.bat` use bun to execute the script, install bun before run it
 
 * This script just do search and replace, so you can do it yourself in your favorite language.
 
