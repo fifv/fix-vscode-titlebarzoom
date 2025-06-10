@@ -4,6 +4,18 @@ From v1.72, vscode's titlebar zoom can't be less than 0
 
 This script is used to hack vscode's code to force enable titlebar zoom. It also fix checksum.
 
+
+> 
+> 1.67.2 (expected):
+> 
+> ![expected](https://user-images.githubusercontent.com/75289510/173312206-1d6d947f-65a1-4d74-915a-b6b4a38f30c3.gif)
+> 
+> 
+> 
+> 1.68 & 1.69-insider (unexpected):
+> 
+> ![unexpected](https://user-images.githubusercontent.com/75289510/173312292-e4817b12-d3ea-4fc4-b079-95d86043b711.gif)
+
 ## Usage
 
 1. modify `vscodeRootPath` in `fix-vscode-titlebarzoom.ts` to your vscode's install dir
